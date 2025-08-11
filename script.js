@@ -4,5 +4,33 @@ botaoMostraPalavras.addEventListener("click", botaoMostraPalavras);
 
 function botaoMostraPalavrasChave(){
     const texto = document.querySelector("#entrada-de-texto").Value;
-    const campoResultado = document.querySelector
+    const campoResultado = document.querySelector("#resultado-palavrchave");
+    const palavrasChave = processaTexto(texto);
+    campoResultado.textContent = palavraChave.join(",");
+
+}
+
+function processaTexto(texto){
+    let palavras = texto.split(/\P{L}+/u);
+    const frequencias = contraFrequencia(palavras);
+    let ordenadas = Object.keys(frequencias).sort(ordenadaPalavras);
+
+    function ordenaPalavras(p1, p2){
+        return frequencias[p2] - frequencias[p1];
+    }
+    return ordenadas.slice(0,10);
+}
+
+function contaFrequencia(palavras){
+    let frequencias = {};
+    for (let i of palavras){
+        frequencias[i] = 0;
+
+        for(let j of palavras){
+            if (i == j){
+                frequencias[i]++;
+            }
+        }
+    }
+    return frequencias;
 }
