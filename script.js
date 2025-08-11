@@ -6,14 +6,14 @@ function botaoMostraPalavrasChave(){
     const texto = document.querySelector("#entrada-de-texto").Value;
     const campoResultado = document.querySelector("#resultado-palavrchave");
     const palavrasChave = processaTexto(texto);
-    campoResultado.textContent = palavraChave.join(",");
+    campoResultado.textContent = palavrasChave.join(",");
 
 }
 
 function processaTexto(texto){
     let palavras = texto.split(/\P{L}+/u);
-    const frequencias = contraFrequencia(palavras);
-    let ordenadas = Object.keys(frequencias).sort(ordenadaPalavras);
+    const frequencias = contaFrequencias(palavras);
+    let ordenadas = Object.keys(frequencias).sort(ordenaPalavras);
 
     function ordenaPalavras(p1, p2){
         return frequencias[p2] - frequencias[p1];
